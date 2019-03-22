@@ -1,6 +1,6 @@
 buildscript {
-	repositories {
-		mavenLocal()
+    repositories {
+        mavenLocal()
         maven {
             name "aliyun1"
             url 'http://maven.aliyun.com/nexus/content/groups/public'
@@ -13,14 +13,14 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
         mavenCentral()
-	}
-	dependencies {
-		classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.19.RELEASE'
-	}
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.19.RELEASE'
+    }
 }
 
 plugins {
-	id 'java'
+    id 'java'
 }
 
 apply plugin: 'org.springframework.boot'
@@ -30,24 +30,29 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenLocal()
-        maven {
-            name "aliyun1"
-            url 'http://maven.aliyun.com/nexus/content/groups/public'
-        }
-        maven {
-            name "aliyun2"
-            url 'http://maven.aliyun.com/mvn/repository/'
-        }
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-        mavenCentral()
+    mavenLocal()
+    maven {
+        name "aliyun1"
+        url 'http://maven.aliyun.com/nexus/content/groups/public'
+    }
+    maven {
+        name "aliyun2"
+        url 'http://maven.aliyun.com/mvn/repository/'
+    }
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    mavenCentral()
 }
 
 dependencies {
-	compile 'org.springframework.boot:spring-boot-starter-security'
-	compile 'org.springframework.boot:spring-boot-starter-web'
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
-	testCompile 'org.springframework.security:spring-security-test'
+    compile('org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.boot:spring-boot-starter-data-redis',
+            'com.google.guava:guava:24.1-jre',
+    )
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'org.springframework.security:spring-security-test'
+    compileOnly('org.projectlombok:lombok')
+    testCompileOnly('org.projectlombok:lombok')
 }
